@@ -68,6 +68,7 @@ class Camera:
                 gray = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
                 gray = cv2.GaussianBlur(gray, (self.blur, self.blur), 0)
                 _, thrsh1 = cv2.threshold(gray, self.dt, 255, cv2.THRESH_BINARY_INV)
+                thrsh1 = cv2.bitwise_not(thrsh1, np.ones(thrsh1.shape, thrsh1.dtype))
                 moments = cv2.moments(thrsh1)
                 print(moments['m00'])
                 if moments['m00'] > 5000:
