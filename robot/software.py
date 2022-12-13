@@ -88,7 +88,7 @@ class Camera:
         while True:
             try:
                 ret, img = self.cap.read()
-                cv2.imwrite('../tmp/work_full.png', img)
+                # cv2.imwrite('../tmp/work_full.png', img)
                 if not ret:
                     break
                 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -105,7 +105,7 @@ class Camera:
 
                 # debug
                 _mask_debug = cv2.adaptiveThreshold(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY), 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 61, 5)
-                cv2.imwrite('../tmp/_mask_debug.png', _mask_debug)
+                # cv2.imwrite('../tmp/_mask_debug.png', _mask_debug)
 
                 moments = cv2.moments(thrsh1)
                 print(moments['m00'])
