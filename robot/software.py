@@ -110,7 +110,7 @@ class Camera:
                 moments = cv2.moments(thrsh1)
                 print(moments['m00'])
                 if moments['m00'] > 5000:
-                    line_center = int(moments["m10"] / moments["m00"], int(moments["m01"] / moments["m00"]))
+                    line_center = (int(moments["m10"] / moments["m00"]), int(moments["m01"] / moments["m00"]))
                     callback(line_center)
                 # cv2.imshow("image", thrsh1)
                 # key = cv2.waitKey(1) & 0xFF
