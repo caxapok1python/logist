@@ -14,7 +14,6 @@ cap = cv2.VideoCapture(0)
 
 while True:
     try:
-
         ret, image = cap.read()
         cv2.imwrite('../tmp/tmp.png', image)
         print(image.shape)
