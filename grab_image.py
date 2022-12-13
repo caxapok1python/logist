@@ -5,7 +5,7 @@ import numpy as np
 def apply_filter(img):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (13, 13), 0)
-    _, filter = cv2.threshold(gray, 10, 255, cv2.THRESH_BINARY_INV)
+    _, filter = cv2.threshold(gray, 60, 255, cv2.THRESH_BINARY_INV)
     filter = cv2.bitwise_not(filter, np.ones(filter.shape, filter.dtype))
     return filter
 
