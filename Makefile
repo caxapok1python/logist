@@ -2,7 +2,7 @@ init:
 	echo "inited"
 
 grab:
-	rm ../tmp/*
+	rm ./tmp/*
 	python3 grab_image.py
 
 download:
