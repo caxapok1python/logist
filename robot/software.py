@@ -96,7 +96,7 @@ class Camera:
                 # cv2.imwrite('../tmp/work.png', crop)
                 print(crop)
 
-                gray = cv2.GaussianBlur(gray, (self.blur, self.blur), 0)
+                gray = cv2.GaussianBlur(crop, (self.blur, self.blur), 0)
 
                 # Apply adaptive thresholding
                 thrsh1 = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 31, 15)
