@@ -94,7 +94,7 @@ class Camera:
                 crop = gray[self.work_pos:self.work_pos + self.work_height,
                        0 + int((self.width - self.work_width) / 2):self.width - int((self.width - self.work_width) / 2)]
                 # cv2.imwrite('../tmp/work.png', crop)
-                print(crop)
+                # print(crop)
 
                 gray = cv2.GaussianBlur(crop, (self.blur, self.blur), 0)
 
