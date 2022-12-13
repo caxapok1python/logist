@@ -100,11 +100,11 @@ class Camera:
                 gray = cv2.GaussianBlur(crop, (self.blur, self.blur), 0)
 
                 # Apply adaptive thresholding
-                thrsh1 = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 31, 15)
+                thrsh1 = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 61, 5)
                 thrsh1 = cv2.bitwise_not(thrsh1, np.ones(thrsh1.shape, thrsh1.dtype))
 
                 # debug
-                _mask_debug = cv2.adaptiveThreshold(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY), 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 31, 15)
+                _mask_debug = cv2.adaptiveThreshold(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY), 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 61, 5)
                 cv2.imwrite('../tmp/_mask_debug.png', _mask_debug)
 
                 moments = cv2.moments(thrsh1)
