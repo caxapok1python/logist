@@ -2,6 +2,7 @@ init:
 	echo "inited"
 
 grab:
+	touch ./tmp/1
 	rm ./tmp/*
 	python3 grab_image.py
 
