@@ -90,11 +90,12 @@ class Camera:
                 cv2.imwrite('../tmp/work_full.png', img)
                 if not ret:
                     break
-                crop = img[self.work_pos:self.work_pos + self.work_height,
+                gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+                crop = gray[self.work_pos:self.work_pos + self.work_height,
                        0 + int((self.width - self.work_width) / 2):self.width - int((self.width - self.work_width) / 2)]
                 # cv2.imwrite('../tmp/work.png', crop)
                 print(crop)
-                gray = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
+
                 gray = cv2.GaussianBlur(gray, (self.blur, self.blur), 0)
 
                 # Apply adaptive thresholding
