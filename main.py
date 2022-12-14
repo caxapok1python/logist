@@ -3,9 +3,9 @@ import numpy as np
 from robot import *
 import argparse
 
-kp = 0.01
+kp = 0.005
 ki = 0.0
-kd = 0.0
+kd = 0.035
 dt = 1.0
 
 if __name__ == '__main__':
