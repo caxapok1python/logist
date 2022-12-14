@@ -74,7 +74,7 @@ class Callback:
         self.pid.ki = ki
         self.pid.kd = kd
         self.pid.dt = dt
-        self.pid.min = self.robot.chassis.statpower
+        self.pid.min = -self.robot.chassis.statpower
         self.pid.max = self.robot.chassis.statpower
 
     def follow_line(self, *args):
