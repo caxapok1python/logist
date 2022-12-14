@@ -93,5 +93,6 @@ class Callback:
         self.robot.chassis.set_power(left, right)
 
         print(angle)
+        print(delta)
         print(*list(map(lambda x: round(x, 2), (left, right))))
         # self.robot.chassis.direction(angle)
