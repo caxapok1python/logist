@@ -19,5 +19,7 @@ if __name__ == '__main__':
     robot.camera.set_line_params(dt=130, work_pos=30, work_width=500, work_height=20, blur=13)
     callback = Callback(robot)
     callback.configurate_pid(kp, ki, kd, dt)
+
+
     # robot.camera.track_line_auto(callback.follow_line)
     robot.camera.track_line(callback.follow_line)
