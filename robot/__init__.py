@@ -41,7 +41,7 @@ class PID:
         self.max = 20
 
     def in_range(self, out):
-        return min(max(self.min, out), self.max)
+        return max(min(self.max, out), self.min)
 
     def regulator(self, val):
         self.err = self.setpoint - val
@@ -79,6 +79,7 @@ class Callback:
     def follow_line(self, *args):
         angle = self.calculate_angle(*args)
         delta = abs(self.pid.regulator(val=angle))
+        print(self.pid.err)
 
         left = self.robot.chassis.statpower
         right = self.robot.chassis.statpower
