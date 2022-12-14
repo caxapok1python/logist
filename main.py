@@ -23,3 +23,4 @@ if __name__ == '__main__':
 
     # robot.camera.track_line_auto(callback.follow_line)
     robot.camera.track_line(callback.follow_line)
+    robot.chassis.set_power(0, 0)
