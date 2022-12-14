@@ -73,15 +73,16 @@ class Callback:
         self.pid.ki = ki
         self.pid.kd = kd
         self.pid.dt = dt
-        self.pid.min = 0
+        self.pid.min = self.robot.chassis.statpower
         self.pid.max = self.robot.chassis.statpower
 
     def follow_line(self, *args):
         angle = self.calculate_angle(*args)
-        delta = self.pid.regulator(val=angle)
+        delta = abs(self.pid.regulator(val=angle))
 
         left = self.robot.chassis.statpower
         right = self.robot.chassis.statpower
+
         if angle == 0:
             left = 0
             right = 0
