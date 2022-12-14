@@ -51,6 +51,7 @@ class PID:
         self.last_err = self.err
 
         out = self.kp * self.err + self.ki * self.sum_err + self.kd * self.derr
+        print(f'\n{out}\n')
         return self.in_range(out)
 
 
