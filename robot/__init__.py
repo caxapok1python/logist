@@ -87,7 +87,7 @@ class Callback:
             right = 0
         elif angle < 0:
             right -= delta
-        else:
+        elif angle > 0:
             left -= delta
 
         self.robot.chassis.set_power(left, right)
