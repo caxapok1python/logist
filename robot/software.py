@@ -55,8 +55,10 @@ class Camera:
             return median
         return 115
 
-    def track_line(self, callback=print):
-        while True:
+    def track_line(self, callback=print, line=1):
+        is_line = False
+        counter = 0
+        while counter < line:
             try:
                 ret, img = self.cap.read()
                 # cv2.imwrite('../tmp/work_full.png', img)
@@ -73,10 +75,11 @@ class Camera:
                 print(moments['m00'])
                 if moments['m00'] > 5000:
                     if moments['m00'] > 1_500_000:
-                        break
-                        thrsh1 = cv2.bitwise_not(thrsh1, np.ones(thrsh1.shape, thrsh1.dtype))
-
-                        moments = cv2.moments(thrsh1)
+                        if not is_line:
+                            counter += 1
+                        is_line = True
+                    else:
+                        is_line = False
                     line_center = (int(moments["m10"] / moments["m00"]), int(moments["m01"] / moments["m00"]))
                     callback(line_center)
                 # cv2.imshow("image", thrsh1)
@@ -85,7 +88,9 @@ class Camera:
                 break
         self.stop()
 
-    def track_line_auto(self, callback=print):
+    def track_line_auto(self, callback=print, lines=1):
+        is_line = False
+        counter = 0
         while True:
             try:
                 ret, img = self.cap.read()

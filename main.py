@@ -12,6 +12,8 @@ if __name__ == '__main__':
     # parser = argparse.ArgumentParser()
     # parser.add_argument("--power", type=int, default=0.25, help="Maximum power")
 
+    stop = int(input("Введите номер остановки: "))
+
     robot = Robot('/dev/ttyUSB0')
     robot.setup_motors((44, 42, 5), (50, 48, 6), max_power=0.25)
     robot.setup_camera(0)
@@ -20,7 +22,6 @@ if __name__ == '__main__':
     callback = Callback(robot)
     callback.configurate_pid(kp, ki, kd, dt)
 
-
     # robot.camera.track_line_auto(callback.follow_line)
-    robot.camera.track_line(callback.follow_line)
+    robot.camera.track_line(callback.follow_line, line=stop)
     robot.chassis.set_power(0, 0)
